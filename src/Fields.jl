@@ -82,20 +82,3 @@ function get_Bfield(s::TT, θ::TT, ζ::TT, SpecVol::SPECEquilibrium{TT,ATT,TSA},
 end
 
 
-
-
-"""
-    field_line!(ẋ, t, x, SpecVol::SPECEquilibrium,lvol::Int=1)
-
-In place field line tracing function given a `lvol`
-
-TODO: Implement for multi-volume spec equilibria
-"""
-function field_line!(ẋ, t, x, SpecVol::SPECEquilibrium,lvol::Int=1)
-
-    B1, B2, B3 = get_Bfield(x[1], x[2], t, SpecVol,lvol)
-
-    ẋ[1] = B1 / B3
-    ẋ[2] = B2 / B3
-
-end

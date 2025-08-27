@@ -10,6 +10,7 @@ module SPECreader
     using StaticArrays
     using NonlinearSolve
     using Optim
+    using OrdinaryDiffEq
 
     # Data Structures
     include("DataStructs.jl")
@@ -20,6 +21,7 @@ module SPECreader
     include("Fields.jl")
     # Fields
     # Basis functions for SPEC geometry
+    include("Useful.jl")
 
 
     export SPECEquilibrium
