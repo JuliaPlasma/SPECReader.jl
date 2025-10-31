@@ -10,7 +10,7 @@ using LinearAlgebra: norm
 using StaticArrays
 using NonlinearSolve: NonlinearProblem, solve
 using Optim: optimize
-using OrdinaryDiffEq: ODEProblem, solve, EnsembleProblem, EnsembleThreads
+using OrdinaryDiffEq: ODEProblem, solve, EnsembleProblem, EnsembleThreads, Tsit5, remake
 
 # Data Structures
 include("DataStructs.jl")
@@ -34,6 +34,8 @@ export get_RZ, find_sθζ
 
 export get_Bfield
 export field_line!
+
+export construct_poincare
 
 
 export plotboundary, plotboundary!
