@@ -50,8 +50,8 @@ function get_zernike!(zernike, s::TT, SpecVol::SPECEquilibrium,derivative=false)
             zernike[nᵢ, mᵢ, 1] = factor1 * ((factor2 * s̄^2 - factor3) * zernike[nᵢ-2, mᵢ, 1] - factor4 * zernike[nᵢ-4, mᵢ, 1])
             zernike[nᵢ, mᵢ, 2] = factor1 * (2 * factor2 * s̄ * zernike[nᵢ-2, mᵢ, 1] + (factor2 * s̄^2 - factor3) * zernike[nᵢ-2, mᵢ, 2] - factor4 * zernike[nᵢ-4, mᵢ, 2])
             if derivative
-                zernike[nᵢ,mᵢ,3] = factor1 * (2 * factor2 * (2 * rᵐ * zernike[nᵢ-2,mᵢ,1] + zernike[nᵢ-2,mᵢ,1])) + 
-                    (facto2 * rᵐ^2 - factor3) * zernike[nᵢ-2,mᵢ,3] - factor4*zernike[nᵢ-4,mᵢ,3]
+                zernike[nᵢ,mᵢ,3] = factor1 * (2 * factor2 * (2 * rᵐ * zernike[nᵢ-2,mᵢ,1] + zernike[nᵢ-2,mᵢ,1])) +
+                    (factor2 * rᵐ^2 - factor3) * zernike[nᵢ-2,mᵢ,3] - factor4*zernike[nᵢ-4,mᵢ,3]
             end
         end
 
@@ -100,7 +100,7 @@ end
 Chebyshev coefficients are provided by Rbc, Rbs, Zbc, Zbs
 """
 function get_chebychev!(chebychev,s::TT,SpecVol::SPECEquilibrium,lvol::Int,derivative=false) where TT
-    
+
     RadialResolution = SpecVol.RadialResolution[lvol]
 
     chebychev .= zero(TT)
