@@ -25,7 +25,7 @@
 #     if SpecVol.CoordinateSingularity
 #         dR[1,1,1] = Rbc * mᵢ * costerm + 2 * (Rbc - Rbc)*costerm/2
 #     else
-#         dR[1,1,1] = dR[1,1,1] - sum(Rbc * costerm) * 
+#         dR[1,1,1] = dR[1,1,1] - sum(Rbc * costerm) *
 #     end
 
 # end
@@ -64,7 +64,7 @@ function get_boundary(SpecVol::SPECEquilibrium, lvol::Int=SpecVol.NumberofVolume
             Zbs=Zbs,
             m=SpecVol.m,
             n=SpecVol.n)
-    
+
     return boundary
 end
 
@@ -115,7 +115,7 @@ function get_RZ(s::TT, θ, ζ, SpecVol::SPECEquilibrium, lvol::Int=1) where {TT}
         Zomn = zero(TT)
         Zemn = zero(TT)
 
-        
+
         (lvol == 1) ? CoordinateSingularity = SpecVol.CoordinateSingularity : CoordinateSingularity = false
 
         if CoordinateSingularity
@@ -220,7 +220,7 @@ function find_sθζ(X, ζ, SpecVol::SPECEquilibrium, lvol::Integer, max_attempts
 
     # This ensures things are inside the box, probably need to check that it doesn't cause some weird issues with point initialisation
     attempt = 1
-    while !(-1 ≤ u[1] ≤ 1) || !(0.0 ≤ u[2] ≤ 2π) || (attempt > max_attempts)
+    while !(-1 ≤ u[1] ≤ 1) || !(0.0 ≤ u[2] ≤ 2π) || (attempt < max_attempts)
         IC = rand(2)
         IC[1] = 2IC[2] - 1
         IC[2] = IC[2] * 2π

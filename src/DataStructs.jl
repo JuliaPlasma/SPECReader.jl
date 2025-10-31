@@ -9,15 +9,15 @@ const Slab = GeometryType{:Slab}()
 
 
 struct VectorPotential{ATT}
-    Ate :: ATT
-    Aze :: ATT
-    Ato :: ATT
-    Azo :: ATT
+    Ate::ATT
+    Aze::ATT
+    Ato::ATT
+    Azo::ATT
 end
 
 struct FourierSeries{TT}
-    R :: Vector{TT}
-    Z :: Vector{TT}
+    R::Vector{TT}
+    Z::Vector{TT}
 end
 
 
@@ -35,6 +35,8 @@ speceq = SPECEquilibrium(eqname)
 
 """
 struct SPECEquilibrium{TT,ATT<:Array{TT},TSA}
+
+    FileName::String
 
     Ntor::Int64
     Geometry::GeometryType
@@ -168,7 +170,8 @@ struct SPECEquilibrium{TT,ATT<:Array{TT},TSA}
 
         cache = zeros(TT, 3)
 
-        new{TT,typeof(Ate),typeof(RadialBasis)}(Ntor, Geometry, Mvol, PoloidalResolution, Nfp, mn, Nvol,
+        new{TT,typeof(Ate),typeof(RadialBasis)}(eqname,
+            Ntor, Geometry, Mvol, PoloidalResolution, Nfp, mn, Nvol,
             StellaratorSymmetric, ICoordinateSingularity,
             m, n,
             Rbc, Rbs, Zbc, Zbs, Rpol, Rtor,
@@ -204,17 +207,17 @@ function ReadBoundary(fname::String)
     Ntor = read(phys["Ntor"])[end]
 
     m = vcat([collect(-PoloidalResolution:PoloidalResolution) for i in 1:Ntor+1]...)[PoloidalResolution+1:end]
-    n = vcat(zeros(Int,PoloidalResolution+1), repeat(1:Ntor,inner=2PoloidalResolution+1))
+    n = vcat(zeros(Int, PoloidalResolution + 1), repeat(1:Ntor, inner=2PoloidalResolution + 1))
 
     if eltype(m) == Int32
-        m = [promote(m...,Int64(1))[1:end-1]...]
+        m = [promote(m..., Int64(1))[1:end-1]...]
     end
 
-    boundary = (Rbc = Rbc[:,2],
-        Zbs = Zbs[:,2],
-        m = m,
-        n = n)
-    
+    boundary = (Rbc=Rbc[:, 2],
+        Zbs=Zbs[:, 2],
+        m=m,
+        n=n)
+
     return boundary
 end
 
@@ -229,7 +232,8 @@ function ReadPoincare(fname::String)
     f = h5open(fname)
 
     pdata = f["poincare"]
-    poinout = (R = read(pdata["R"]),Z = read(pdata["Z"]))
+    poinout = (R=read(pdata["R"]), Z=read(pdata["Z"]))
 
     return poinout
 end
+ReadPoincare(speceq::SPECEquilibrium) = ReadPoincare(speceq.FileName)
