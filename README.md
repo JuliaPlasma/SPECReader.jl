@@ -2,6 +2,7 @@
 
 [![Static Badge](https://img.shields.io/badge/docs-stable-blue)](https://spiffmeister.github.io/SPECreader/dev/index.html)
 [![CI](https://github.com/Spiffmeister/SPECreader/actions/workflows/CI.yml/badge.svg)](https://github.com/Spiffmeister/SPECreader/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/github/Spiffmeister/SPECreader/graph/badge.svg?token=3RMCT7EJPC)](https://codecov.io/github/Spiffmeister/SPECreader)
 
 This package is for reading and manipulating output from the [Stepped Pressure Equilibrium Code](https://github.com/PrincetonUniversity/SPEC) (SPEC).
 
