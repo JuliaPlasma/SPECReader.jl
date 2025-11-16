@@ -2,7 +2,7 @@ using GLMakie
 using SPECreader
 
 
-speceq = SPECEquilibrium("testing/data/G3V01L0Fi.002.sp.h5")
+speceq = SPECEquilibrium("test/data/G3V01L0Fi.002.sp.h5")
 
 # The Poincar\'e data is not loaded into SPECEquilibrium object and must be loaded seperately or computed.
 # To load the Poincar\'e you can use

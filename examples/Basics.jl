@@ -4,7 +4,7 @@ using SPECreader
 
 # First we'll read in the SPEC output file
 
-speceq = SPECEquilibrium("testing/data/G3V01L0Fi.002.sp.h5")
+speceq = SPECEquilibrium("test/data/G3V01L0Fi.002.sp.h5")
 
 # We can get the Fourier modes of the boundary of the equilibrium,
 
@@ -12,7 +12,7 @@ specbound = get_boundary(speceq)
 
 # note that we also have the ability to read the boundary directly from the file if that's all we're interested in,
 
-ReadBoundary("testing/data/G3V01L0Fi.002.sp.h5")
+ReadBoundary("test/data/G3V01L0Fi.002.sp.h5")
 
 # The Fourier components of the axis can be obtained with,
 

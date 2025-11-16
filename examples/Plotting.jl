@@ -7,7 +7,7 @@ using GLMakie
 
 # First we'll read in the SPEC output file
 
-speceq = SPECEquilibrium("testing/data/G3V01L0Fi.002.sp.h5")
+speceq = SPECEquilibrium("test/data/G3V01L0Fi.002.sp.h5")
 
 # We can get the Fourier modes of the boundary of the equilibrium,
 
