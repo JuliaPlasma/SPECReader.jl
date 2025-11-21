@@ -1,9 +1,9 @@
 """
     SPECreader
 
-Julia version of the SPEC-field-reader by Zhisong Qu https://github.com/zhisong/SPEC-field-reader
+Julia version of the [SPEC-field-reader](https://github.com/zhisong/SPEC-field-reader) by Zhisong Qu. It also has some of the functionality of the MATLAB and Python routines packaged with [SPEC](https://github.com/PrincetonUniversity/SPEC).
 """
-module SPECreader
+module SPECReader
 
 using HDF5: h5open, read
 using LinearAlgebra: norm

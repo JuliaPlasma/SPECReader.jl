@@ -1,11 +1,13 @@
 # SPECreader.jl
 
+```@docs
+SPECReader
+```
 
-
-## Reading in data
+## Index
 
 ```@autodocs
-Modules = [SPECreader]
+Modules = [SPECReader]
 Pages = ["DataStructs.jl"]
 Private=false
 ```
@@ -14,7 +16,7 @@ Private=false
 ## Geometry
 
 ```@autodocs
-Modules = [SPECreader]
+Modules = [SPECReader]
 Pages = ["Geometry.jl"]
 Private=false
 ```
@@ -23,9 +25,7 @@ Private=false
 ## Fields
 
 ```@autodocs
-Modules = [SPECreader]
+Modules = [SPECReader]
 Pages = ["Fields.jl"]
 Private=false
 ```
-
-

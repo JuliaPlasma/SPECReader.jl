@@ -3,10 +3,10 @@ module plotting
 
 using Makie, GeometryBasics
 using LinearAlgebra: norm, normalize
-using SPECreader
+using SPECReader
 
-import SPECreader: plotboundary, plotboundary!
-import SPECreader: plotaxis, plotaxis!
+import SPECReader: plotboundary, plotboundary!
+import SPECReader: plotaxis, plotaxis!
 
 
 # import SPECreader
@@ -20,7 +20,7 @@ end
 
 Makie.preferred_axis_type(::PlotBoundary) = LScene
 
-function Makie.plot!(input::PlotBoundary{<:Tuple{<:SPECreader.SPECEquilibrium}})
+function Makie.plot!(input::PlotBoundary{<:Tuple{<:SPECReader.SPECEquilibrium}})
 
     speceq = input[1][]
 
@@ -42,7 +42,7 @@ function Makie.plot!(input::PlotBoundary{<:Tuple{<:SPECreader.SPECEquilibrium}})
     # Compute the normals for the points
     _normals = normalize.(points)
 
-    modB = [norm(SPECreader.get_Bfield(1.0, θ, ζ, speceq)) for θ in θ_rng, ζ in ζ_rng]
+    modB = [norm(SPECReader.get_Bfield(1.0, θ, ζ, speceq)) for θ in θ_rng, ζ in ζ_rng]
 
     # Assign the colours to the faces
     _color = FaceView(modB[:], _faces)
@@ -66,7 +66,7 @@ end
 
 Makie.preferred_axis_type(::PlotAxis) = LScene
 
-function Makie.plot!(input::PlotAxis{<:Tuple{<:SPECreader.SPECEquilibrium}})
+function Makie.plot!(input::PlotAxis{<:Tuple{<:SPECReader.SPECEquilibrium}})
     speceq = input[1][]
 
     RZ_axis = [get_RZ(-0.9, 0.0, ζ, speceq, 1) for ζ in range(0.0, 2π, 1001)]

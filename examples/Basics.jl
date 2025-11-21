@@ -1,6 +1,6 @@
 # # Basic operation
 
-using SPECreader
+using SPECReader
 
 # First we'll read in the SPEC output file
 
@@ -18,7 +18,7 @@ ReadBoundary("test/data/G3V01L0Fi.002.sp.h5")
 
 specaxis = get_axis(speceq)
 
-# Given a point ``(s,\\theta,\\zeta)`` in the logical coordinates, we can recover the real-space coordinates,
+# Given a point ``(s,\theta,\zeta)`` in the logical coordinates, we can recover the real-space coordinates,
 
 RZ = get_RZ(0.0, 0.0, 0.0, speceq)
 
@@ -31,5 +31,5 @@ boundary = [get_RZ(1.0, θ, ζ, speceq, speceq.NumberofVolumes) for θ in 0:2π/
 
 stz = find_sθζ(RZ, 0.0, speceq, 1)
 
-# note that this requires a nonlinear solve, if the coordinate cannot be found in the domain ``[-1,1]\\times[0,2\\pi)^2\\times[1,l_{max}]``,
+# note that this requires a nonlinear solve, if the coordinate cannot be found in the domain ``[-1,1]\times[0,2\pi)^2\times[1,l_{max}]``,
 #  (where ``l_{max}`` is the maximum number of volumes), then the method will try a number of initial conditions before returning.
