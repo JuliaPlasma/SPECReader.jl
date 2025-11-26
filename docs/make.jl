@@ -5,8 +5,8 @@ using Documenter, Literate, SPECReader
 
 
 LitPathExamples = [
-    joinpath(@__DIR__, "..", "examples", filename) for filename in readdir("../examples")
-    ]
+    joinpath(@__DIR__, "..", "examples", filename) for filename in readdir(joinpath(@__DIR__, "..", "examples"))
+]
 
 DocSrc = joinpath(@__DIR__, "src", "examples") #.md creation path
 
